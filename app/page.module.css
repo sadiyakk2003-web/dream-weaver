@@ -1,0 +1,260 @@
+/* ===== Landing Page ===== */
+
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--space-4xl) var(--space-xl);
+    overflow: hidden;
+    background: var(--gradient-hero), var(--color-black);
+    gap: var(--space-3xl);
+}
+
+/* --- Background Stars --- */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--color-white);
+    animation: twinkle var(--transition-slow) ease-in-out infinite;
+}
+
+/* --- Hero Section --- */
+
+.hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-lg);
+    z-index: 1;
+    animation: fadeInUp 1s var(--ease-out) both;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -3px;
+    line-height: 1;
+}
+
+.titleWord {
+    background: linear-gradient(135deg,
+            var(--color-yellow) 0%,
+            #ffba08 35%,
+            var(--color-pink) 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 6s ease-in-out infinite;
+}
+
+.tagline {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--color-white-muted);
+    letter-spacing: 1px;
+    max-width: 380px;
+    animation: fadeInUp 1s var(--ease-out) 0.2s both;
+}
+
+/* --- Roadmap --- */
+
+.roadmap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 700px;
+    animation: fadeInUp 1s var(--ease-out) 0.4s both;
+}
+
+.roadmapTrack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-shrink: 0;
+}
+
+.stepIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    position: relative;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.stepIcon:hover {
+    transform: translateY(-4px) scale(1.05);
+}
+
+.stepBlue {
+    background: linear-gradient(135deg, var(--color-blue), #2563eb);
+    box-shadow: 0 4px 24px var(--color-blue-glow);
+}
+
+.stepBlue:hover {
+    box-shadow: 0 8px 32px var(--color-blue-glow);
+}
+
+.stepViolet {
+    background: linear-gradient(135deg, var(--color-violet), #7c3aed);
+    box-shadow: 0 4px 24px var(--color-violet-glow);
+}
+
+.stepViolet:hover {
+    box-shadow: 0 8px 32px var(--color-violet-glow);
+}
+
+.stepMix {
+    background: linear-gradient(135deg, var(--color-violet), var(--color-blue));
+    box-shadow: 0 4px 24px var(--color-violet-glow);
+}
+
+.stepMix:hover {
+    box-shadow: 0 8px 32px var(--color-blue-glow);
+}
+
+.stepLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-white-muted);
+    letter-spacing: 0.5px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* --- Connectors --- */
+
+.connector {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 var(--space-sm);
+    color: var(--color-white-muted);
+    margin-bottom: 22px;
+    /* offset for step labels */
+}
+
+.connectorLine {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-blue-glow), var(--color-violet-glow));
+    border-radius: 1px;
+}
+
+.connectorArrow {
+    flex-shrink: 0;
+}
+
+/* --- CTA Button --- */
+
+.ctaSection {
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 1s var(--ease-out) 0.6s both;
+}
+
+.ctaButton {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-2xl);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--color-black);
+    background: var(--color-yellow);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.ctaButton:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 0 40px var(--color-yellow-glow), 0 0 100px var(--color-yellow-glow);
+}
+
+.ctaButton:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.ctaButton svg {
+    transition: transform var(--transition-fast);
+}
+
+.ctaButton:hover svg {
+    transform: translateX(4px);
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 640px) {
+    .page {
+        padding: var(--space-3xl) var(--space-md);
+        gap: var(--space-2xl);
+    }
+
+    .heroGlow {
+        width: 300px;
+        height: 200px;
+    }
+
+    .title {
+        font-size: clamp(2.5rem, 12vw, 3.5rem);
+        letter-spacing: -2px;
+    }
+
+    .stepIcon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .stepIcon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .stepLabel {
+        font-size: 0.7rem;
+    }
+
+    .connectorLine {
+        width: 24px;
+    }
+
+    .ctaButton {
+        padding: var(--space-md) var(--space-xl);
+        font-size: 1rem;
+    }
+}

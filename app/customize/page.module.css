@@ -1,0 +1,270 @@
+/* ===== Customize Page ===== */
+
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 100px var(--space-xl) var(--space-3xl);
+    overflow: hidden;
+    background: #000;
+    gap: var(--space-2xl);
+}
+
+/* --- Background Stars --- */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--color-white);
+    animation: twinkle var(--transition-slow) ease-in-out infinite;
+}
+
+/* --- Sections --- */
+
+.section {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    width: 100%;
+    max-width: 640px;
+    animation: fadeInUp 0.8s var(--ease-out) both;
+}
+
+.section:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.sectionTitle {
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-blue), var(--color-violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sectionSub {
+    font-size: 0.95rem;
+    color: var(--color-white-muted);
+    margin-top: -8px;
+}
+
+/* --- Mode Grid --- */
+
+.modeGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    width: 100%;
+}
+
+.modeTile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-sm);
+    background: var(--color-black-card);
+    border: 2px solid #2a2a3a;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    color: var(--color-white-muted);
+    backdrop-filter: blur(8px);
+    font-family: inherit;
+}
+
+.modeTile:hover {
+    border-color: var(--color-violet);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 24px var(--color-violet-glow);
+    color: var(--color-white);
+}
+
+.modeTile.modeActive {
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 20px var(--color-yellow-glow), 0 0 50px #e4ff1a10;
+    color: var(--color-yellow);
+    background: #e4ff1a08;
+}
+
+.modeIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--color-blue), var(--color-violet));
+    color: var(--color-white);
+    transition: background var(--transition-fast);
+}
+
+.modeTile.modeActive .modeIcon {
+    background: linear-gradient(135deg, var(--color-yellow), #c8d900);
+    color: var(--color-black);
+}
+
+.modeLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-align: center;
+}
+
+/* --- Format Toggle --- */
+
+.formatRow {
+    display: flex;
+    gap: var(--space-md);
+    width: 100%;
+}
+
+.formatBtn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--color-white-muted);
+    background: var(--color-black-card);
+    border: 2px solid #2a2a3a;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color var(--transition-fast),
+        background var(--transition-fast),
+        color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        transform var(--transition-fast);
+    backdrop-filter: blur(8px);
+}
+
+.formatBtn:hover {
+    border-color: var(--color-blue);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.formatBtn.formatActive {
+    background: linear-gradient(135deg, var(--color-blue), #2563eb);
+    border-color: var(--color-blue);
+    color: var(--color-white);
+    box-shadow: 0 4px 24px var(--color-blue-glow);
+}
+
+.formatBtn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    filter: grayscale(0.8);
+}
+
+.formatBtn.disabled:hover {
+    transform: none;
+    border-color: #2a2a3a;
+}
+
+.formatEmoji {
+    font-size: 1.2rem;
+}
+
+/* --- Confirm CTA --- */
+
+.ctaSection {
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s var(--ease-out) 0.3s both;
+}
+
+.confirmBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-2xl);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--color-black);
+    background: var(--color-yellow);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        opacity var(--transition-fast);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.confirmBtn:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 0 40px var(--color-yellow-glow), 0 0 100px var(--color-yellow-glow);
+}
+
+.confirmBtn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.confirmBtn svg {
+    transition: transform var(--transition-fast);
+}
+
+.confirmBtn:hover svg {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.confirmBtn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    animation: none;
+    box-shadow: none;
+}
+
+.confirmBtn.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 640px) {
+    .page {
+        padding: 90px var(--space-md) var(--space-2xl);
+        gap: var(--space-xl);
+    }
+
+    .modeGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formatRow {
+        flex-direction: column;
+    }
+
+    .confirmBtn {
+        padding: var(--space-md) var(--space-xl);
+        font-size: 1rem;
+    }
+}

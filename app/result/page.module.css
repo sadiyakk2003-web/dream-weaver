@@ -1,0 +1,419 @@
+/* ===== Result Page ===== */
+
+.page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 100px var(--space-xl) var(--space-3xl);
+    overflow: hidden;
+    background: #000;
+    gap: var(--space-2xl);
+}
+
+/* --- Background Stars --- */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--color-white);
+    animation: twinkle var(--transition-slow) ease-in-out infinite;
+}
+
+/* --- Scroll Paper Container --- */
+
+.scrollContainer {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 660px;
+}
+
+.scrollPaper {
+    position: relative;
+    padding: var(--space-3xl) var(--space-2xl);
+    background: linear-gradient(180deg,
+            #0d0d18 0%,
+            #111122 50%,
+            #0d0d18 100%);
+    border: 1px solid #2a2a3a;
+    border-radius: var(--radius-lg);
+    animation: unrollScroll 1.4s var(--ease-out) both;
+}
+
+@keyframes unrollScroll {
+    0% {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+        transform: translateY(-40px) rotateX(15deg);
+    }
+
+    40% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0% 0);
+        transform: translateY(0) rotateX(0deg);
+    }
+}
+
+/* --- Loading State --- */
+
+.loadingState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+    padding: var(--space-4xl) 0;
+    text-align: center;
+}
+
+.loadingText {
+    font-size: 1.1rem;
+    color: var(--color-white-muted);
+    font-style: italic;
+    letter-spacing: 0.5px;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* --- Cloud Baby Knitting Animation --- */
+
+.cloudBaby {
+    position: relative;
+    width: 120px;
+    height: 100px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.cloudBody {
+    position: relative;
+    width: 100px;
+    height: 70px;
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+.cloudBody::before,
+.cloudBody::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.cloudBody::before {
+    width: 50px;
+    height: 50px;
+    top: -20px;
+    left: 15px;
+}
+
+.cloudBody::after {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 40px;
+}
+
+.cloudHead {
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    z-index: 2;
+}
+
+.cloudEyes {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    font-weight: bold;
+    color: #444;
+}
+
+.cloudCheek {
+    position: absolute;
+    width: 12px;
+    height: 6px;
+    background: #ffb6c1;
+    border-radius: 50%;
+    top: 10px;
+}
+
+.cloudCheek:first-child {
+    left: -5px;
+}
+
+.cloudCheek:last-of-type {
+    right: -25px;
+}
+
+.halo {
+    position: absolute;
+    top: -35px;
+    left: 5px;
+    font-size: 20px;
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.knittingNeedles {
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    width: 100%;
+}
+
+.needleLeft,
+.needleRight {
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background: var(--color-yellow);
+    box-shadow: 0 0 10px var(--color-yellow-glow);
+}
+
+.needleLeft {
+    transform: rotate(45deg);
+    animation: knitLeft 0.8s ease-in-out infinite;
+}
+
+.needleRight {
+    transform: rotate(-45deg);
+    left: 40px;
+    animation: knitRight 0.8s ease-in-out infinite;
+}
+
+@keyframes knitLeft {
+
+    0%,
+    100% {
+        transform: rotate(45deg) translate(0, 0);
+    }
+
+    50% {
+        transform: rotate(35deg) translate(5px, -5px);
+    }
+}
+
+@keyframes knitRight {
+
+    0%,
+    100% {
+        transform: rotate(-45deg) translate(0, 0);
+    }
+
+    50% {
+        transform: rotate(-35deg) translate(-5px, -5px);
+    }
+}
+
+.yarn {
+    position: absolute;
+    bottom: -5px;
+    left: 35px;
+    width: 15px;
+    height: 15px;
+    background: linear-gradient(to right, #ff0, #f0f, #0ff);
+    border-radius: 50%;
+    animation: wobble 1s ease-in-out infinite;
+}
+
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* --- Story Content --- */
+
+.storyTitle {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-align: center;
+    font-family: var(--font-display);
+    animation: shimmer 6s ease-in-out infinite;
+    margin-bottom: var(--space-sm);
+}
+
+.ornament {
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 8px;
+    color: var(--color-violet);
+    margin-bottom: var(--space-lg);
+    opacity: 0.7;
+}
+
+.ornament:last-child {
+    margin-bottom: 0;
+    margin-top: var(--space-lg);
+    font-style: italic;
+    letter-spacing: 4px;
+    color: var(--color-white-muted);
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    margin: var(--space-lg) auto;
+    border-radius: 1px;
+}
+
+.paragraph {
+    font-size: 1.15rem;
+    line-height: 2;
+    color: #e0e0f0;
+    margin-bottom: var(--space-lg);
+    text-align: justify;
+    animation: fadeInParagraph 1s var(--ease-out) both;
+}
+
+@keyframes fadeInParagraph {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Small Cloud Baby (End) --- */
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    margin: var(--space-lg) 0;
+}
+
+.cloudBabySmall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.cloudBodySmall {
+    width: 40px;
+    height: 25px;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    opacity: 0.8;
+}
+
+.haloSmall {
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    font-size: 12px;
+}
+
+.imageCaption {
+    font-size: 0.8rem;
+    color: var(--color-white-muted);
+    font-style: italic;
+}
+
+/* --- Actions --- */
+
+.actions {
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s var(--ease-out) both;
+}
+
+.restartBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-xl);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: transparent;
+    border: 2px solid var(--color-violet);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+}
+
+.restartBtn:hover {
+    transform: translateY(-2px);
+    background: var(--color-violet);
+    box-shadow: 0 4px 24px var(--color-violet-glow);
+}
+
+/* --- Error State --- */
+
+.errorState {
+    text-align: center;
+    padding: var(--space-4xl) 0;
+    color: var(--color-pink);
+}
+
+.backBtn {
+    display: inline-block;
+    margin-top: var(--space-lg);
+    color: var(--color-white);
+    text-decoration: underline;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 640px) {
+    .page {
+        padding: 90px var(--space-md) var(--space-2xl);
+    }
+
+    .scrollPaper {
+        padding: var(--space-2xl) var(--space-lg);
+    }
+
+    .paragraph {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
