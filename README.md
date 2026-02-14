@@ -1,18 +1,16 @@
-<p align="center">
-  <img src="./img.png" alt="Project Banner" width="100%">
-</p>
 
-# [Dream Weaver] 🎯
+
+# Dream Weaver 
 
 ## Basic Details
 
-### Team Name: [INDIVIDUAL PROJECT]
+### Team Name:INDIVIDUAL PROJECT
 
 ### Team Members
-- Member 1: [SHADIYA] - [MAMOC]
+- Member 1: SHADIYA -MAMOC
 
 ### Hosted Project Link
-[Link to be added upon deployment]
+https://dream-weaver-green.vercel.app/
 
 ### Project Description
 Dream Weaver is an AI-powered storytelling engine designed to bridge the gap between fragmented dream memories and complete, atmospheric narratives. Users can "scribble" the hazy details of their dreams, choose a "vibe" or mode, and let our magical weaver (powered by Google Gemini) knit them into a beautiful, personalized story.
@@ -30,10 +28,10 @@ Dream Weaver provides a creative space to document these fragments before they f
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [HTML, CSS, JavaScript]
-- Frameworks used: [Next.js 15 (App Router)]
-- Libraries used: [@google/generative-ai, Framer Motion, Lucide React]
-- Tools used: [Git, GitHub, Antigravity AI Assistant, VS Code, Google Gemini API]
+- Languages used: HTML, CSS, JavaScript
+- Frameworks used: Next.js 15 (App Router)
+- Libraries used: @google/generative-ai, Framer Motion, Lucide React
+- Tools used: Git, GitHub, Antigravity AI Assistant, VS Code, Google Gemini API
 
 ---
 
