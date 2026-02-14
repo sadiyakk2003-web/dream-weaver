@@ -80,10 +80,10 @@ npm run dev
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](docs/screenshots/landing.png)
+![Screenshot1](public/screenshots/landing.jpg)
 *Landing Page: The entrance to the Dream Weaver, featuring a stylish gradient title and visual roadmap.*
 
-![Screenshot2](docs/screenshots/customize.png)
+![Screenshot2](public/screenshots/customize.jpg)
 *Magic Control Panel: Where users select their dream's emotional resonance and format.*
 
 ![Screenshot3](docs/screenshots/result.png)
