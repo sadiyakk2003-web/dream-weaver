@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 
@@ -33,7 +33,7 @@ const MODE_THEMES = {
     },
 };
 
-export default function ResultPage() {
+function ResultContent() {
     const searchParams = useSearchParams();
     const mode = searchParams.get("mode") || "feel-good";
     const format = searchParams.get("format") || "text";
@@ -82,6 +82,83 @@ export default function ResultPage() {
     }, [mode, format]);
 
     return (
+        <section className={styles.scrollContainer}>
+            {loading ? (
+                <div className={styles.loadingState}>
+                    <div className={styles.cloudBaby}>
+                        <div className={styles.cloudBody}>
+                            <div className={styles.cloudHead}>
+                                <div className={styles.cloudCheek} />
+                                <div className={styles.cloudCheek} />
+                                <div className={styles.cloudEyes}>
+                                    <span className={styles.eye}>.</span>
+                                    <span className={styles.eye}>.</span>
+                                </div>
+                                <div className={styles.halo}>✨</div>
+                            </div>
+                            <div className={styles.knittingNeedles}>
+                                <div className={styles.needleLeft} />
+                                <div className={styles.needleRight} />
+                                <div className={styles.yarn} />
+                            </div>
+                        </div>
+                    </div>
+                    <p className={styles.loadingText}>The Dream Weaver is knitting your memories...</p>
+                </div>
+            ) : error ? (
+                <div className={styles.errorState}>
+                    <p>{error}</p>
+                    <Link href="/scribble" className={styles.backBtn}>Back to Scribble Pad</Link>
+                </div>
+            ) : (
+                <div
+                    className={styles.scrollPaper}
+                    style={{
+                        borderColor: theme.borderColor,
+                        boxShadow: `0 0 40px ${theme.glowColor}, 0 0 80px ${theme.glowColor}20`,
+                    }}
+                >
+                    <div className={styles.ornament}>✦ ✦ ✦</div>
+
+                    <h1
+                        className={styles.storyTitle}
+                        style={{
+                            background: theme.gradient,
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            backgroundClip: "text",
+                        }}
+                    >
+                        {title || theme.titleDefault}
+                    </h1>
+
+                    <div className={styles.divider} style={{ background: `linear-gradient(90deg, transparent, ${theme.borderColor}, transparent)` }} />
+
+                    <p className={styles.paragraph}>
+                        {story}
+                    </p>
+
+                    <div className={styles.divider} style={{ background: `linear-gradient(90deg, transparent, ${theme.borderColor}, transparent)` }} />
+
+                    {/* Finishing Ornament */}
+                    <div className={styles.imageContainer}>
+                        <div className={styles.cloudBabySmall}>
+                            <div className={styles.cloudBodySmall}>
+                                <div className={styles.haloSmall}>✨</div>
+                            </div>
+                            <p className={styles.imageCaption}>Dream Weave Complete ☁️</p>
+                        </div>
+                    </div>
+
+                    <div className={styles.ornament}>— fin —</div>
+                </div>
+            )}
+        </section>
+    );
+}
+
+export default function ResultPage() {
+    return (
         <div className={styles.page}>
             {/* Ambient stars */}
             <div className={styles.particles}>
@@ -101,92 +178,24 @@ export default function ResultPage() {
                 ))}
             </div>
 
-            {/* Scroll Container */}
-            <section className={styles.scrollContainer}>
-                {loading ? (
-                    <div className={styles.loadingState}>
-                        <div className={styles.cloudBaby}>
-                            <div className={styles.cloudBody}>
-                                <div className={styles.cloudHead}>
-                                    <div className={styles.cloudCheek} />
-                                    <div className={styles.cloudCheek} />
-                                    <div className={styles.cloudEyes}>
-                                        <span className={styles.eye}>.</span>
-                                        <span className={styles.eye}>.</span>
-                                    </div>
-                                    <div className={styles.halo}>✨</div>
-                                </div>
-                                <div className={styles.knittingNeedles}>
-                                    <div className={styles.needleLeft} />
-                                    <div className={styles.needleRight} />
-                                    <div className={styles.yarn} />
-                                </div>
-                            </div>
-                        </div>
-                        <p className={styles.loadingText}>The Dream Weaver is knitting your memories...</p>
-                    </div>
-                ) : error ? (
-                    <div className={styles.errorState}>
-                        <p>{error}</p>
-                        <Link href="/scribble" className={styles.backBtn}>Back to Scribble Pad</Link>
-                    </div>
-                ) : (
-                    <div
-                        className={styles.scrollPaper}
-                        style={{
-                            borderColor: theme.borderColor,
-                            boxShadow: `0 0 40px ${theme.glowColor}, 0 0 80px ${theme.glowColor}20`,
-                        }}
-                    >
-                        <div className={styles.ornament}>✦ ✦ ✦</div>
-
-                        <h1
-                            className={styles.storyTitle}
-                            style={{
-                                background: theme.gradient,
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                                backgroundClip: "text",
-                            }}
-                        >
-                            {title || theme.titleDefault}
-                        </h1>
-
-                        <div className={styles.divider} style={{ background: `linear-gradient(90deg, transparent, ${theme.borderColor}, transparent)` }} />
-
-                        <p className={styles.paragraph}>
-                            {story}
-                        </p>
-
-                        <div className={styles.divider} style={{ background: `linear-gradient(90deg, transparent, ${theme.borderColor}, transparent)` }} />
-
-                        {/* Finishing Ornament */}
-                        <div className={styles.imageContainer}>
-                            <div className={styles.cloudBabySmall}>
-                                <div className={styles.cloudBodySmall}>
-                                    <div className={styles.haloSmall}>✨</div>
-                                </div>
-                                <p className={styles.imageCaption}>Dream Weave Complete ☁️</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.ornament}>— fin —</div>
-                    </div>
-                )}
-            </section>
+            <Suspense fallback={
+                <div className={styles.loadingState}>
+                    <p className={styles.loadingText}>Loading the stars...</p>
+                </div>
+            }>
+                <ResultContent />
+            </Suspense>
 
             {/* Start Over */}
-            {!loading && (
-                <section className={styles.actions}>
-                    <Link href="/" className={styles.restartBtn}>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M3 12a9 9 0 1 1 9 9" />
-                            <polyline points="3 3 3 12 12 12" />
-                        </svg>
-                        <span>Dream Again</span>
-                    </Link>
-                </section>
-            )}
+            <section className={styles.actions}>
+                <Link href="/" className={styles.restartBtn}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 12a9 9 0 1 1 9 9" />
+                        <polyline points="3 3 3 12 12 12" />
+                    </svg>
+                    <span>Dream Again</span>
+                </Link>
+            </section>
         </div>
     );
 }
