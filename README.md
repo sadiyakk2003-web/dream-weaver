@@ -80,13 +80,13 @@ npm run dev
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](public/screenshots/landing.jpg)
+![LANDING PAGE1](public/screenshots/landing.jpg)
 *Landing Page: The entrance to the Dream Weaver, featuring a stylish gradient title and visual roadmap.*
 
-![Screenshot2](public/screenshots/customize.jpg)
+![CUSTUMIZE](public/screenshots/customize.jpg)
 *Magic Control Panel: Where users select their dream's emotional resonance and format.*
 
-![Screenshot3](docs/screenshots/result.png)
+![RESULT](public/screenshots/result.jpg)
 *The Result: A completed dream "woven" into a paper-roll scroll with atmospheric styling.*
 
 #### Diagrams
@@ -157,7 +157,7 @@ I was in a garden. Blue flowers. A stranger gave me a glass sphere. Smelled like
 ## Project Demo
 
 ### Video
-[Link to Demo Video]
+[[Link to Demo Video](https://github.com/sadiyakk2003-web/dream-weaver/blob/main/public/videos/demo.mp4)]
 
 *The video demonstrates the end-to-end user journey: entering fragments, experiencing the magical loading state, and viewing the mode-aware results.*
 
