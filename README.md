@@ -1,18 +1,16 @@
-<p align="center">
-  <img src="./img.png" alt="Project Banner" width="100%">
-</p>
 
-# [Dream Weaver] 🎯
+
+# Dream Weaver 
 
 ## Basic Details
 
-### Team Name: [INDIVIDUAL PROJECT]
+### Team Name:INDIVIDUAL PROJECT
 
 ### Team Members
-- Member 1: [SHADIYA] - [MAMOC]
+- Member 1: SHADIYA -MAMOC
 
 ### Hosted Project Link
-[Link to be added upon deployment]
+https://dream-weaver-green.vercel.app/
 
 ### Project Description
 Dream Weaver is an AI-powered storytelling engine designed to bridge the gap between fragmented dream memories and complete, atmospheric narratives. Users can "scribble" the hazy details of their dreams, choose a "vibe" or mode, and let our magical weaver (powered by Google Gemini) knit them into a beautiful, personalized story.
@@ -30,10 +28,10 @@ Dream Weaver provides a creative space to document these fragments before they f
 ### Technologies/Components Used
 
 **For Software:**
-- Languages used: [HTML, CSS, JavaScript]
-- Frameworks used: [Next.js 15 (App Router)]
-- Libraries used: [@google/generative-ai, Framer Motion, Lucide React]
-- Tools used: [Git, GitHub, Antigravity AI Assistant, VS Code, Google Gemini API]
+- Languages used: HTML, CSS, JavaScript
+- Frameworks used: Next.js 15 (App Router)
+- Libraries used: @google/generative-ai, Framer Motion, Lucide React
+- Tools used: Git, GitHub, Antigravity AI Assistant, VS Code, Google Gemini API
 
 ---
 
@@ -82,13 +80,13 @@ npm run dev
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](docs/screenshots/landing.png)
+![LANDING PAGE1](public/screenshots/landing.jpg)
 *Landing Page: The entrance to the Dream Weaver, featuring a stylish gradient title and visual roadmap.*
 
-![Screenshot2](docs/screenshots/customize.png)
+![CUSTUMIZE](public/screenshots/customize.jpg)
 *Magic Control Panel: Where users select their dream's emotional resonance and format.*
 
-![Screenshot3](docs/screenshots/result.png)
+![RESULT](public/screenshots/result.jpg)
 *The Result: A completed dream "woven" into a paper-roll scroll with atmospheric styling.*
 
 #### Diagrams
@@ -159,7 +157,7 @@ I was in a garden. Blue flowers. A stranger gave me a glass sphere. Smelled like
 ## Project Demo
 
 ### Video
-[Link to Demo Video]
+[[Link to Demo Video](https://github.com/sadiyakk2003-web/dream-weaver/blob/main/public/videos/demo.mp4)]
 
 *The video demonstrates the end-to-end user journey: entering fragments, experiencing the magical loading state, and viewing the mode-aware results.*
 
