@@ -45,6 +45,8 @@ function ResultContent() {
     const theme = MODE_THEMES[mode] || MODE_THEMES["feel-good"];
 
     useEffect(() => {
+        const controller = new AbortController();
+
         async function weaveDream() {
             setLoading(true);
             setError(null);
@@ -62,22 +64,33 @@ function ResultContent() {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ fragments, mode }),
+                    signal: controller.signal,
                 });
 
                 if (!response.ok) throw new Error("Failed to weave the dream");
 
                 const data = await response.json();
-                setStory(data.story);
-                setTitle(data.title);
+
+                if (data.errorMessage && data.errorMessage !== "null") {
+                    setError(data.errorMessage);
+                } else {
+                    setStory(data.story);
+                    setTitle(data.title);
+                }
             } catch (err) {
+                if (err.name === 'AbortError') return;
                 console.error(err);
                 setError("The Weaver's needles got tangled. Please try again.");
             } finally {
-                setLoading(false);
+                if (!controller.signal.aborted) {
+                    setLoading(false);
+                }
             }
         }
 
         weaveDream();
+
+        return () => controller.abort();
     }, [mode]);
 
     return (

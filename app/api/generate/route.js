@@ -14,20 +14,33 @@ export async function POST(req) {
         const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
 
         const prompt = `
-      Act as the "Dream Weaver," an ethereal storytelling engine.
+      Act as a companion storyteller who bridges the gap between fragmented thoughts and a vivid dream experience.
       
-      User dream fragments: "${fragments}"
-      Selected Mode: ${mode}
+      The user has provided these dream fragments: "${fragments}"
+      The dream's atmosphere/mode is: ${mode}
 
-      Requirements:
-      1. Provide a 1-paragraph story (approx 100-150 words) that "completes" the dream based on the selected mode (${mode}).
-      2. Tone: Magical, ethereal, and intuitive.
-      3. Output MUST be in valid JSON format with the following keys:
-         "title": A short, poetic title for the dream.
-         "story": The generated story paragraph.
-         "atmosphere": A 1-word description of the mood.
+      Task:
+      1. Validation: Check if the fragments are meaningful. If the fragments are nonsense, purely profane, too short (less than 3 non-filler words), or random characters, do NOT generate a story. Instead, provide a helpful "errorMessage".
+      
+      2. Story Generation: 
+         - Preservation: Use the user's fragments as the factual foundation. Do not heavily rewrite or over-embellish these specific details; keep them grounded as the starting point.
+         - Expansion (The "Next Step"): Spend the majority of the paragraph describing the immediate progression of the dream. Based on the "${mode}", narrate what happens after these fragments occur. 
+         - Length: Write exactly 1 paragraph (100-150 words).
 
-      JSON Output:
+      3. Tone: Use everyday, relatable language. Avoid "AI-speak" or overly flowery, ethereal prose. Speak like a friend describing a dream they just woke up from.
+
+      4. Requirements:
+         - The story must start with the fragments and then pivot into a new, unfolding sequence of events.
+         - The "what happened next" must be heavily influenced by the ${mode}.
+         - Output MUST be in valid JSON format.
+
+      JSON Output Structure:
+      {
+         "title": "A relatable, simple title",
+         "story": "The continuation of the dream...",
+         "atmosphere": "1-word mood",
+         "errorMessage": "null or a friendly explanation of why the fragments couldn't be used"
+      }
     `;
 
         const result = await model.generateContent(prompt);
