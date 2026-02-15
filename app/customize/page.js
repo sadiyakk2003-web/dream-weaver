@@ -58,9 +58,8 @@ const FORMATS = [
 
 export default function CustomizePage() {
     const [selectedMode, setSelectedMode] = useState(null);
-    const [selectedFormat, setSelectedFormat] = useState(null);
 
-    const isReady = selectedMode && selectedFormat;
+    const isReady = selectedMode;
 
     return (
         <div className={styles.page}>
@@ -107,9 +106,8 @@ export default function CustomizePage() {
                     {FORMATS.map((fmt) => (
                         <button
                             key={fmt.id}
-                            className={`${styles.formatBtn} ${selectedFormat === fmt.id ? styles.formatActive : ""} ${fmt.disabled ? styles.disabled : ""}`}
-                            onClick={() => !fmt.disabled && setSelectedFormat(fmt.id)}
-                            disabled={fmt.disabled}
+                            className={`${styles.formatBtn} ${fmt.id === "text" ? styles.formatActive : ""} ${fmt.disabled ? styles.disabled : ""}`}
+                            disabled={fmt.disabled || fmt.id === "visual"}
                         >
                             <span className={styles.formatEmoji}>{fmt.emoji}</span>
                             <span>{fmt.label}</span>
@@ -121,7 +119,7 @@ export default function CustomizePage() {
             {/* Confirm */}
             <section className={styles.ctaSection}>
                 <Link
-                    href={isReady ? "/result" : "#"}
+                    href={isReady ? `/result?mode=${selectedMode}` : "#"}
                     className={`${styles.confirmBtn} ${!isReady ? styles.disabled : ""}`}
                     onClick={(e) => {
                         if (!isReady) e.preventDefault();

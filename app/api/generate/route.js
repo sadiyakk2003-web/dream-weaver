@@ -5,7 +5,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 export async function POST(req) {
     try {
-        const { fragments, mode, format } = await req.json();
+        const { fragments, mode } = await req.json();
 
         if (!fragments) {
             return NextResponse.json({ error: "No fragments provided" }, { status: 400 });
@@ -18,13 +18,11 @@ export async function POST(req) {
       
       User dream fragments: "${fragments}"
       Selected Mode: ${mode}
-      Selected Format: ${format}
 
       Requirements:
-      1. If format is "text", provide a 1-paragraph story (approx 100-150 words) that "completes" the dream based on the selected mode (${mode}).
-      2. If format is "visual", provide a descriptive text that evokes a "Wimpy Kid" style illustrated visual representation of the dream (but still in text form for now).
-      3. Tone: Magical, ethereal, and intuitive.
-      4. Output MUST be in valid JSON format with the following keys:
+      1. Provide a 1-paragraph story (approx 100-150 words) that "completes" the dream based on the selected mode (${mode}).
+      2. Tone: Magical, ethereal, and intuitive.
+      3. Output MUST be in valid JSON format with the following keys:
          "title": A short, poetic title for the dream.
          "story": The generated story paragraph.
          "atmosphere": A 1-word description of the mood.

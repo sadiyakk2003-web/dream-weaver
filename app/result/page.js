@@ -36,7 +36,6 @@ const MODE_THEMES = {
 function ResultContent() {
     const searchParams = useSearchParams();
     const mode = searchParams.get("mode") || "feel-good";
-    const format = searchParams.get("format") || "text";
 
     const [story, setStory] = useState(null);
     const [title, setTitle] = useState("");
@@ -62,7 +61,7 @@ function ResultContent() {
                 const response = await fetch("/api/generate", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ fragments, mode, format }),
+                    body: JSON.stringify({ fragments, mode }),
                 });
 
                 if (!response.ok) throw new Error("Failed to weave the dream");
@@ -79,7 +78,7 @@ function ResultContent() {
         }
 
         weaveDream();
-    }, [mode, format]);
+    }, [mode]);
 
     return (
         <section className={styles.scrollContainer}>
